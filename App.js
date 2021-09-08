@@ -21,37 +21,54 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height
+const width = Dimensions.get('window').width*2;
+const aspectRatio = 627/660
+const adjustedWidth = width*20/100
+const height = width/aspectRatio
+const adjustedHeight = height*6.5/100
+// const adjustedWidth = screenWidth/aspectRatio
+// const adjustedHeight = screenHeight/aspectRatio
+const adjustedHeight1 = height*28.63/100
+const adjustedWidth1 = width*24.73/100
+const adjustedHeight3 = height*78.48/100
+const adjustedWidth3 = width*88.5/100
+const adjustedHeight4 = height*92.5757/100
+const adjustedWidth4 = width*13.55/100
+
+// top : 132(20%), left : 41(6.5%)
 
 class App extends Component {
   DATA = [{id: '1'}];
   render() {
     return (
-      <View style={{flex: 1, }}>
-        <ScrollView contentContainerStyle = {{width : 660, height : screenHeight}}  horizontal>
+      <View  >
+        <ScrollView showsHorizontalScrollIndicator = {false}>
+        <ScrollView showsHorizontalScrollIndicator = {false} contentContainerStyle = {{height : height, width : width}}  horizontal>
           <ImageBackground
-            style={{width : '100%', height : '95%' }}
+            style={{width : '100%'}}
+            resizeMode = 'contain'
             source={require('./images/map.jpg')}>
-            <View style={{marginTop: 10}}>
+            <View >
+              <View style = {{top : adjustedWidth - 10, left: adjustedHeight -10, position: 'absolute'}}>
+              <TouchableOpacity>
+               <View style = {{padding  : 10, backgroundColor : 'green'}} />
+              </TouchableOpacity>
+              </View>
               <TouchableOpacity
-                style={{top: 132, left: 41, position: 'absolute'}}>
+                style={{top: adjustedHeight1 - 10, left: adjustedWidth1 -10, position: 'absolute'}}>
                <View style = {{padding  : 10, backgroundColor : 'red'}} />
               </TouchableOpacity>
               <TouchableOpacity
-                style={{top: 189, left: 155.1, position: 'absolute'}}>
-               <View style = {{padding  : 10, backgroundColor : 'red'}} />
+                style={{top: adjustedHeight3 - 10, left: adjustedWidth3 -10, position: 'absolute'}}>
+                 <View style = {{padding  : 10 , backgroundColor : 'red'}} />
               </TouchableOpacity>
               <TouchableOpacity
-                style={{top: 518, left: 555.1, position: 'absolute'}}>
-                 <View style = {{padding  : 10, backgroundColor : 'red'}} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{top: 611, left: 85.1, position: 'absolute'}}>
+                style={{top: adjustedHeight4 - 10, left: adjustedWidth4 -10, position: 'absolute'}}>
                 <View style = {{padding  : 10, backgroundColor : 'red'}} />
               </TouchableOpacity>
             </View>
           </ImageBackground>
+        </ScrollView>
         </ScrollView>
       </View>
     );
